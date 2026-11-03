@@ -31,7 +31,7 @@ export default function WishlistPage() {
     if (!user?.email) return;
     try {
       setLoading(true);
-      const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+      const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
       const res = await fetch(`${serverUrl}/api/wishlist/${encodeURIComponent(user.email)}`, {
         cache: "no-store",
       });

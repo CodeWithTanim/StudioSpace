@@ -46,7 +46,7 @@ export default function DashboardPage() {
     async function loadDashboardData() {
       try {
         setLoading(true);
-        const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+        const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
 
         // Fetch user's listings
         const studiosPromise = fetch(`${serverUrl}/api/my-studios/${encodeURIComponent(user?.email || "")}`, {

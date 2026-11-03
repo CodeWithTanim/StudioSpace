@@ -54,7 +54,7 @@ export default function MyListingsPage() {
     if (!user?.email) return;
     try {
       setLoading(true);
-      const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+      const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
       const res = await fetch(`${serverUrl}/api/my-studios/${encodeURIComponent(user.email)}`, {
         cache: "no-store",
       });
@@ -82,7 +82,7 @@ export default function MyListingsPage() {
 
     setIsDeleting(true);
     try {
-      const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+      const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
       const token = typeof window !== "undefined" ? localStorage.getItem("studiospace_token") : null;
       const headers: Record<string, string> = {};
       if (token) {

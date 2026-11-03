@@ -61,7 +61,7 @@ export default function StudioCard({
 
     setIsSaving(true);
     try {
-      const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+      const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
       const token = typeof window !== "undefined" ? localStorage.getItem("studiospace_token") : null;
       const res = await fetch(`${serverUrl}/api/wishlist/toggle`, {
         method: "POST",

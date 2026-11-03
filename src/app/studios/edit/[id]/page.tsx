@@ -91,7 +91,7 @@ export default function EditStudioPage({
     async function fetchStudioData() {
       try {
         setLoading(true);
-        const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+        const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
         const res = await fetch(`${serverUrl}/api/studios/${studioId}`, {
           cache: "no-store",
         });
@@ -161,7 +161,7 @@ export default function EditStudioPage({
 
     setSubmitting(true);
     try {
-      const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+      const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
 
       const updatedPayload = {
         title,

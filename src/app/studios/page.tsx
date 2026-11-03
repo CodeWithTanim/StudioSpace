@@ -64,7 +64,7 @@ function StudiosContent() {
     async function loadStudios() {
       try {
         setLoading(true);
-        const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+        const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
         const params = new URLSearchParams();
 
         if (selectedCategory && selectedCategory !== "All") {
@@ -101,7 +101,7 @@ function StudiosContent() {
 
     async function loadWishlist() {
       try {
-        const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+        const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
         const res = await fetch(`${serverUrl}/api/wishlist/${encodeURIComponent(session?.user?.email || "")}`);
         if (res.ok) {
           const data = await res.json();

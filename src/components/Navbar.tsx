@@ -44,7 +44,7 @@ export default function Navbar() {
 
     const syncJwt = async () => {
       try {
-        const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+        const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
         const res = await fetch(`${serverUrl}/api/jwt`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -174,7 +174,7 @@ export default function Navbar() {
 
   const handleSignOut = async () => {
     try {
-      const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+      const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
       try {
         await fetch(`${serverUrl}/api/logout`, {
           method: "POST",

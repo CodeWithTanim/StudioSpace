@@ -57,7 +57,7 @@ export default function MyBookingsPage() {
     if (!user?.email) return;
     try {
       setLoading(true);
-      const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+      const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
       const res = await fetch(`${serverUrl}/api/my-bookings/${encodeURIComponent(user.email)}`, {
         cache: "no-store",
       });
@@ -85,7 +85,7 @@ export default function MyBookingsPage() {
 
     setCancelling(true);
     try {
-      const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+      const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
       const res = await fetch(`${serverUrl}/api/bookings/${bookingToCancel._id}/cancel`, {
         method: "PATCH",
         credentials: "include", // Protected by verifyJWT (Challenge 1)
@@ -122,7 +122,7 @@ export default function MyBookingsPage() {
   // Helper: toggle/confirm booking for demonstration and examiner testing
   const handleConfirmBookingTest = async (bookingId: string) => {
     try {
-      const serverUrl = process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000";
+      const serverUrl = (process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:8000").replace(/\/+$/, "");
       const res = await fetch(`${serverUrl}/api/bookings/${bookingId}/status`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },

@@ -1,6 +1,7 @@
 # StudioSpace — Peer-to-Peer Creative Workspace & Production Studio Sharing Platform 🎬📸
 
-> **Live Website Link**: [https://studiospace-marketplace.vercel.app](https://studiospace-marketplace.vercel.app)  
+> **Live Website Link**: [https://studiospace-tau.vercel.app](https://studiospace-tau.vercel.app)  
+> **Live Backend API**: [https://studiospace-server-alpha-eight.vercel.app](https://studiospace-server-alpha-eight.vercel.app)  
 > *(Local Client: http://localhost:3000 | Local Server: http://localhost:8000)*
 
 ---
